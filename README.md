@@ -8,6 +8,6 @@ Those parts are:
 * 2 move sensors (infrared or w/e)
 * 1 photoresistor
 * 2 rejka
-* --1 alarm thingy--
+* ~~1 alarm thingy(buzzer)~~
 
 Thats all for now, folks
