@@ -10,7 +10,7 @@ Those parts are:
 * Thermodiode
 * A few relays
 * 2 rejka (whatever it means)
-* 1 Buzzer
+* ~~1 Buzzer~~
 
 Most probable source:
 comet.bg
