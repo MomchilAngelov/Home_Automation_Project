@@ -1,13 +1,16 @@
 # Home_Automation_Project #
-Home automation project for VMKS/PPS
+Home automation project for VMKS/MPS
 
 For now, we need extra parts for the project to actually take place
 
 Those parts are:
 
-* 2 move sensors (infrared or w/e)
-* 1 photoresistor
-* 2 rejka
-* ~~1 alarm thingy(buzzer)~~
+* 2 Motion sensors;
+* Photoresistor *** the ones for Raspberry Pi are somehow different from the normal ones ***;
+* Thermodiode
+* A few relays
+* 2 rejka (whatever it means)
+* 1 Buzzer
 
-Thats all for now, folks
+Most probable source:
+comet.bg
