@@ -2,21 +2,17 @@ import http.server
 import socketserver
 import sys
 
-REDIRECTIONS = {"/slashdot/": "http://slashdot.org/", "/freshmeat/": "http://freshmeat.net/"}
-
 class HttpHandler(http.server.BaseHTTPRequestHandler):
 
 	def do_GET(self):
 
 		self.send_response(200)
-		# Send headers
 		self.send_header('Content-type','text/html')
 		self.end_headers()
 
 		# Send message back to client
-		# if self.path=="/":
-		self.send_header("Location", REDIRECTIONS.get(self.path, "/index.html"))
-		# self.path="/index.html"
+		if self.path=="/test":
+			self.wfile.write(b'<h2>REST is working</h2>')
 
 		if self.path == "/configure":
 			self.path = "/init_configuration.html"
