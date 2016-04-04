@@ -2,8 +2,10 @@ import http.server
 import socketserver
 import sys
 
-class HttpHandler(http.server.BaseHTTPRequestHandler):
+ENDPOINT = "/rest/"
 
+class HttpHandler(http.server.BaseHTTPRequestHandler):
+	
 	def do_GET(self):
 
 		self.send_response(200)
@@ -11,17 +13,18 @@ class HttpHandler(http.server.BaseHTTPRequestHandler):
 		self.end_headers()
 
 		# Send message back to client
-		if self.path=="/test":
+		if self.path == ENDPOINT + "test":
 			self.wfile.write(b'<h2>REST is working</h2>')
 
-		if self.path == "/configure":
-			self.path = "/init_configuration.html"
+		if self.path == ENDPOINT + "configure":
+			self.send_response(200)
+			self.path = "init_configuration.html"
 
 		return
 
 
 	def do_POST(self):
-		if self.path=="/send":
+		if self.path == ENDPOINT + "send":
 			form = cgi.FieldStorage(
 				fp=self.rfile, 
 				headers=self.headers,
