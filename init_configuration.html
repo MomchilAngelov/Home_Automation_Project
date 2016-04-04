@@ -17,9 +17,20 @@ Please, choose type of entrance:
 
 <script type="text/javascript" src="libs/jquery-2.2.2.min.js"></script>
 <script type="text/javascript">
- 
+ 	$(document).ready(function() {
+ 		"use strict";
+		
+		var serverTime = new Date();
+
+	    function updateTime() {
+			serverTime = new Date(serverTime.getTime() + 1000);
+	 		$(".currTime").html(serverTime);
+	    }
+
+	    updateTime();
+	    setInterval(updateTime, 1000);
+
+ 	});
 </script>
-
-
 </body>
 </html>
