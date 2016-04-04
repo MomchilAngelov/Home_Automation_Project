@@ -15,8 +15,12 @@ class HttpHandler(http.server.BaseHTTPRequestHandler):
 		self.httpd.serve_forever()
 
 	def do_GET(self):
-		if self.path=="/":
+		if self.path == "/":
 			self.path="/index.html"
+
+		if self.path == "/configure":
+			self.path = "/init_configuration.html"
+
 
 	def do_POST(self):
 		if self.path=="/send":
