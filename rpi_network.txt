@@ -1,0 +1,4 @@
+If has access to network:
+ 1) open /etc/network/interfaces
+ 2) add accordingly (https://wiki.debian.org/NetworkConfiguration) with chosen IP
+ 3) execute following command: ip route add default via *router_addr* dev *interface*
