@@ -1,0 +1,1 @@
+http://unix.stackexchange.com/questions/184965/open-file-from-remote-computer-on-host-computer
