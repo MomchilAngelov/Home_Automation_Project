@@ -35,6 +35,43 @@
  		"use strict";
 		
 		var serverTime = new Date();
+		var ENDPOINT = "http://127.0.0.1:8080";
+
+		function activateWhole() {
+			var url = ENDPOINT + "/rest/activate";
+			$.ajax({
+				type: "GET",
+				url: url,
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("accept", "text/plain");
+				}
+				contentType: "text/plain; charset=UTF-8",
+				success: function(result) {
+					console.log("Success " + result);
+				},
+				error: function(xhr, status, error) {
+					console.log("Error while activating the whole system");
+				}
+			});
+		}
+
+		function deactivateWhole() {
+			var url = ENDPOINT + "/rest/deactivate";
+			$.ajax({
+				type: "GET",
+				url: url,
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("accept", "text/plain");
+				}
+				contentType: "text/plain; charset=UTF-8",
+				success: function(result) {
+					console.log("Success " + result);
+				},
+				error: function(xhr, status, error) {
+					console.log("Error while activating the whole system");
+				}
+			});	
+		}
 
 	    function updateTime() {
 			serverTime = new Date(serverTime.getTime() + 1000);
@@ -46,10 +83,12 @@
 
 	    $(".btn").on("click", function() {
 	    	if ($(this).attr("class") === "btn btn-danger") {
+	    		deactivateWhole();
 	    		$(this).attr("class", "btn btn-success");
 		    	$(this).html("Activate");
 		    	$(".status").html("inactive");
 	    	} else {
+	    		activateWhole();
 		    	$(this).attr("class", "btn btn-danger");
 		    	$(this).html("Deactivate");
 		    	$(".status").html("active");
