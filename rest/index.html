@@ -2,20 +2,34 @@
 <html>
 <head>
 	<title>Home automation system</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-<h2>Home automation</h2>
+<div class="container" style="width: 600px">
+	<h2 style="text-align: center">Home automation</h2>
 
-Current system time:
-<span class="currTime"></span><br><br>
+	<p style="text-align: center">
+		Current system time:
+		<span class="currTime"></span>
+	</p>
+	<br><br>
 
-Please, choose type of entrance:
-<form action="">
-  <input type="radio" name="entDir" value="ltr">Left to Right (>)<br>
-  <input type="radio" name="entDir" value="rtl">Right to left (<)<br>
-</form> 
+	<strong>Activate/deactivate:</strong><br>
+	<button type="button" class="btn btn-success">Activate</button><br>
+	(Currently <i><span class="status">inactive</span></i>)<br><br>
+
+	<strong>Choose type of entrance:</strong><br>
+	Start time <input class="text-input starting-time" type="text" placeholder="DOW MMM DD YYYY HH:MM:SS GMT+0300 (EEST)"><br>
+	End time <input class="text-input ending-time" type="text" placeholder="DOW MMM DD YYYY HH:MM:SS GMT+0300 (EEST)"><br>
+	<input id="submit-time" type="button" value="Submit">
+
+
+	<hr>
+	*DOW = Day of Week
+</div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
  	$(document).ready(function() {
  		"use strict";
@@ -29,6 +43,19 @@ Please, choose type of entrance:
 
 	    updateTime();
 	    setInterval(updateTime, 1000);
+
+	    $(".btn").on("click", function() {
+	    	if ($(this).attr("class") === "btn btn-danger") {
+	    		$(this).attr("class", "btn btn-success");
+		    	$(this).html("Activate");
+		    	$(".status").html("inactive");
+	    	} else {
+		    	$(this).attr("class", "btn btn-danger");
+		    	$(this).html("Deactivate");
+		    	$(".status").html("active");
+	    	}
+
+	    });
 
  	});
 </script>
