@@ -5,10 +5,31 @@ import os, os.path
 
 import cherrypy
 
+
 class StringGenerator(object):
-    @cherrypy.expose
-    def index(self):
-        return open('index.html')
+	def light_lamp(self):
+		global is_lit
+		is_lit = not is_lit
+		GPIO.output(lamp_pin, is_lit)
+
+	@cherrypy.expose
+	def index(self):
+		return open('index.html')
+
+	@cherrypy.expose
+	def activate(self):
+		cherrypy.response.headers['Content-Type'] = 'text/plain'
+		return("HAHAH")
+		# return open('index.html')
+
+	@cherrypy.expose
+	def light(self):
+		GPIO.setmode(GPIO.BOARD)
+
+		is_lit = False
+		lamp_pin = 22
+		GPIO.setup(lamp_pin, GPIO.OUT)
+
 
 class StringGeneratorWebService(object):
 	exposed = True
@@ -40,6 +61,10 @@ if __name__ == '__main__':
 			'tools.sessions.on': True,
 			'tools.response_headers.on': True,
 			'tools.response_headers.headers': [('Content-Type', 'text/plain')],
+		},
+		'/activate': {
+			'tools.sessions.on': True,
+			'tools.response_headers.on': os.path.abspath(os.getcwd())
 		}
 	}
 
