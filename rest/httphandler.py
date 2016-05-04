@@ -10,7 +10,7 @@ class StringGeneratorWebService(object):
 	@cherrypy.tools.accept(media='text/plain')
 	
 	def GET(self):
-		return "HAHAH"
+		return "Hello there"
 
 	def POST(self, length=8):
 		some_string = ''.join(random.sample(string.hexdigits, int(length)))
@@ -26,7 +26,7 @@ class StringGeneratorWebService(object):
 if __name__ == '__main__':
 	conf = {
 		'global': {
-			'server.socket_host': '95.111.79.35',
+			'server.socket_host': '127.0.0.1',
 		},
 		'rest': {
 			'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
